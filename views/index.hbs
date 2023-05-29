@@ -1,9 +1,11 @@
 <!-- search bar -->
 <div class="container search-bar">
   <div class="search-bar-outer">
-    <div class="search-bar-inner">
-      <form action="/search">
-        <h4 class="mb-2">尋找餐廳：</h4>
+    <h4 class="mb-2">尋找餐廳：</h4>
+    <div class="d-flex flex-wrap align-items-center justify-content-between search-bar-inner">
+
+      <form action="/search" class="d-flex align-items-center">
+
         <div class="input-group">
           <input type="text" name="keyword" class="form-control" placeholder="輸入餐廳、分類" aria-label="Restaurant Name..."
             value="{{keyword}}" aria-describedby="search-button">
@@ -11,10 +13,24 @@
             <button class="btn btn-major" type="submit" id="search-button"><i class="fas fa-search"></i></button>
           </div>
         </div>
+        <div class="ms-3 input-group">
+          <select class="form-select" aria-label="Default select example" id="sort" name="sort"
+            onchange="this.form.submit()">
+            <option value="#">選擇排序方式</option>
+            <option value="name_en" {{#is sort "name_en" }} selected {{/is}}>A-Z</option>
+            <option value="-name_en" {{#is sort "-name_en" }} selected {{/is}}>Z-A</option>
+            <option value="category" {{#is sort "category" }}selected{{/is}}>類別</option>
+            <option value="location" {{#is sort "location" }}selected{{/is}}>地區</option>
+          </select>
+        </div>
+
+
       </form>
       <div class="text-end">
         <a href="/restaurants/new"><button class="btn btn-primary">新增餐廳</button></a>
       </div>
+
+
     </div>
   </div>
 </div>
